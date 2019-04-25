@@ -212,7 +212,7 @@ export default {
 
   computed: {
     owner() {
-      let parent = this.$parent;
+      let parent = this.$parent; 
       while (parent && !parent.tableId) {
         parent = parent.$parent;
       }
@@ -438,6 +438,11 @@ export default {
     }
   },
 
+  /*
+  ** 1 step
+  ** this.owner is the parent component
+  ** here the most important code is calling the store's method commit
+  */
   mounted() {
     const owner = this.owner;
     const parent = this.columnOrTableParent;

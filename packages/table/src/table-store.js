@@ -635,6 +635,11 @@ TableStore.prototype.updateCurrentRow = function() {
   }
 };
 
+/*
+  ** 1 step
+  ** this method is called in table-column's mounted callback
+  ** name is insertColumn, so the insertColumn mutation will be called
+  */
 TableStore.prototype.commit = function(name, ...args) {
   const mutations = this.mutations;
   if (mutations[name]) {
