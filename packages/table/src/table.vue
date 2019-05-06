@@ -315,12 +315,12 @@
     },
 
     /*
-    ** 1 step
-    ** pay attention! here import four components used in this component
-    ** the table render columns using table-column, you can read the doc 
-    ** on the internet. the entrance you have to read the table-column.js
-    ** e.g. <table-column></table-column>
-    */
+     * 1 step
+     * pay attention! here import four components used in this component
+     * the table render columns using table-column, you can read the doc 
+     * on the internet. the entrance you have to read the table-column.js
+     * e.g. <table-column></table-column>
+     */
     components: {
       TableHeader,
       TableFooter,
@@ -638,10 +638,11 @@
 
     data() {
       /*
-      ** 2 step
-      ** the vue will call the data callback before computed and created
-      ** so, the new function will be called before created and computed 
-      */
+       * 2 step
+       * the vue will call the data callback before computed and created
+       * so, the new function will be called before created and computed
+       * 
+       */
       const store = new TableStore(this, {
         rowKey: this.rowKey,
         defaultExpandAll: this.defaultExpandAll,
@@ -655,7 +656,7 @@
       });
       return {
         layout,
-        store,
+        store, // store: store above
         isHidden: false,
         renderExpanded: null,
         resizeProxyVisible: false,

@@ -136,6 +136,11 @@ const parseMinWidth = (minWidth) => {
   return minWidth;
 };
 
+/**
+  * 2 step
+  * there is no template or render function in the table-column component
+  * it plays an important role in call the insertColumn to calculate the column array
+  */
 export default {
   name: 'ElTableColumn',
 
@@ -439,18 +444,21 @@ export default {
   },
 
   /*
-  ** 1 step
-  ** this.owner is the parent component
-  ** here the most important code is calling the store's method commit
-  */
+   * 1 step
+   * this.owner is the parent component
+   * here the most important code is calling the store's method commit
+   * 
+   */
   mounted() {
-    const owner = this.owner;
+    const owner = this.owner; // the parent instance this.$parent
     const parent = this.columnOrTableParent;
     let columnIndex;
 
     if (!this.isSubColumn) {
+      // table-column wraps table-column
       columnIndex = [].indexOf.call(parent.$refs.hiddenColumns.children, this.$el);
     } else {
+      // there is no table-column wrapper
       columnIndex = [].indexOf.call(parent.$el.children, this.$el);
     }
 
@@ -462,6 +470,7 @@ export default {
       }
     }
 
+    // store is one property of data in table.vue
     owner.store.commit('insertColumn', this.columnConfig, columnIndex, this.isSubColumn ? parent.columnConfig : null);
   }
 };
